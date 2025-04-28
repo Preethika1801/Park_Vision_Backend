@@ -1,0 +1,50 @@
+name: Python CI with Docker
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push to the 'main' branch
+  pull_request:
+    branches:
+      - main  # Trigger the workflow on pull request targeting the 'main' branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest version of Ubuntu as the runner
+
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10]  # Test the workflow on multiple Python versions
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2  # Check out the repository's code to the runner
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1  # Set up Docker Buildx for building images
+
+    - name: Cache Docker layers
+      uses: actions/cache@v2  # Cache Docker layers to speed up builds
+      with:
+        path: /tmp/.buildx-cache  # Path for cached data
+        key: ${{ runner.os }}-docker-${{ github.sha }}  # Unique key based on SHA of the commit
+        restore-keys: |
+          ${{ runner.os }}-docker-  # Fallback restore keys for cache
+
+    - name: Build Docker image
+      run: |
+        docker build -t preethika1801/parking-system .  # Build the Docker image with the tag 'preethika1801/parking-system'
+
+    - name: Run tests
+      run: |
+        docker run --rm preethika1801/parking-system pytest tests/  # Run the tests using pytest in the container
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2  # Log in to Docker Hub for pushing the image
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}  # Docker Hub username stored as a secret in GitHub
+        password: ${{ secrets.DOCKER_PASSWORD }}  # Docker Hub password stored as a secret in GitHub
+
+    - name: Push Docker image to Docker Hub
+      run: |
+        docker push preethika1801/parking-system  # Push the built Docker image to Docker Hub
