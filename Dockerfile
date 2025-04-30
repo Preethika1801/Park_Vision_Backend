@@ -1,23 +1,28 @@
-# Use a lightweight Python image
 FROM python:3.12-slim
 
-
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-
-# Set working directory inside container
+# Set working directory
 WORKDIR /app
 
-# Copy requirements file and install dependencies
-COPY requirements.txt .
+# Install system dependencies for mysqlclient
+RUN apt-get update && apt-get install -y \
+    gcc \
+    default-libmysqlclient-dev \
+    pkg-config \
+    build-essential \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy your code into the container
+COPY . /app
+
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project into container
-COPY . .
-
-# Expose the port Flask will run on
+# Expose Flask port
 EXPOSE 5000
 
-# Run the application
+# Environment variable (optional)
+ENV NAME=ParkVision
+
+# Run the app
 CMD ["python", "run.py"]
