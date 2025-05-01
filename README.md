@@ -32,7 +32,8 @@ This is a backend API for managing a parking system. It provides functionalities
 
 ## 📁 Project Structure
 
-📁 Parking_system/ │-- 📂 .git/ # Git version control directory
+📁 Parking_system/ 
+│-- 📂 .git/ # Git version control directory
 │-- 📂 .github/
 │ └── 📂 workflows/
 │ └── 📄 cicd.yaml # GitHub Actions workflow for CI/CD
