@@ -31,22 +31,20 @@ This is a backend API for managing a parking system. It provides functionalities
 * [Dependencies](#dependencies)
 
 ## 📁 Project Structure
-
+```
 📁 Parking_system/ 
-│-- 📂 .git/ # Git version control directory
+│-- 📂 .git/           # Git version control directory
 │-- 📂 .github/
 │ └── 📂 workflows/
-│ └── 📄 cicd.yaml # GitHub Actions workflow for CI/CD
-│-- 📂 .pytest_cache/ # Cache from pytest runs (can be ignored)
-│-- 📂 pycache/ # Python bytecode cache (auto-generated)
-│-- 📄 .gitignore # Git ignore file for excluding files from repo
-│-- 📄 app.py # Main Flask app with routes and models
-│-- 📄 Dockerfile # Instructions to build Docker image
+│ └── 📄 cicd.yaml     # GitHub Actions workflow for CI/CD
+│-- 📄 .gitignore      # Git ignore file for excluding files from repo
+│-- 📄 app.py          # Main Flask app with routes and models
+│-- 📄 Dockerfile      # Instructions to build Docker image
 │-- 📄 requirements.txt # Python dependencies
-│-- 📄 run.py # Script to run the Flask app
-│-- 📄 test_app.py # Pytest test suite for the application
+│-- 📄 run.py          # Script to run the Flask app
+│-- 📄 test_app.py     # Pytest test suite for the application
 
-
+```
 
 ### 📄 File & Folder Descriptions
 
