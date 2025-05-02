@@ -22,7 +22,6 @@ This is a backend API for managing a parking system. It provides functionalities
 * **CI/CD:** GitHub Actions, Docker
 
 ## Table of Contents
-* [Project Structure](Project Structure)
 * [Installation](#installation)
 * [Database Setup](#database-setup)
 * [Running the Application](#running-the-application)
