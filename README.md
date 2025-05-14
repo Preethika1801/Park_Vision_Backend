@@ -150,6 +150,6 @@ The project is set up with a CI/CD pipeline using GitHub Actions.
 
 ## 📄 Additional Documentation
 
-To understand this project in more detail, please refer to the **Word document** uploaded in the repository.
+To understand this project in more detail, please refer to the **File** uploaded in the repository.
 
 
